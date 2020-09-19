@@ -19,10 +19,10 @@ RUN echo "deb http://repo.mysql.com/apt/debian/ buster mysql-${MYSQL_MAJOR}" > /
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-		pwgen \
-		openssl \
-		perl \
-		xz-utils \
+    pwgen \
+    openssl \
+    perl \
+    xz-utils \
     net-tools \
     apache2-utils \
     telnet \
@@ -32,14 +32,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     vim \
     mysql-client \
     libhttp-date-perl  libfuse-perl  libxml-simple-perl  libdigest-hmac-perl \
-	  && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
-
-RUN  wget -qO /usr/bin/kubectl \
-     "http://mirror.azure.cn/kubernetes/kubectl/$(curl -sSL http://mirror.azure.cn/kubernetes/kubectl/stable.txt)/bin/linux/amd64/kubectl" && \
-     chmod a+x /usr/bin/kubectl && \
-     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-     echo "Asia/Shanghai" > /etc/timezone
+RUN wget -qO /usr/bin/kubectl \
+    "http://mirror.azure.cn/kubernetes/kubectl/$(curl -sSL http://mirror.azure.cn/kubernetes/kubectl/stable.txt)/bin/linux/amd64/kubectl" && \
+    chmod a+x /usr/bin/kubectl && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone
 
 
 ENV GROOVY_HOME /opt/groovy
